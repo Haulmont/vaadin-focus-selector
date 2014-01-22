@@ -16,16 +16,24 @@
 
 package com.haulmont.vaadin.sample
 
+import com.haulmont.vaadin.sample.ui.FocusTree
 import com.vaadin.server.VaadinRequest
-import com.vaadin.ui.*
+import com.vaadin.ui.UI
+import com.vaadin.ui.VerticalLayout
 
 public class SampleVaadinUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
         def layout = new VerticalLayout()
-        def button = new Button("Build prototype from scratch")
-        layout.addComponent(button)
+
+        def tree = new FocusTree()
+        tree.addItem('Root')
+
+        page.styles.add('.v-tree-focus { border: 1px red solid; }')
+
+        layout.addComponent(tree)
+
         setContent(layout)
     }
 }
